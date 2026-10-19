@@ -151,7 +151,7 @@ export default function DemoModal({ onClose }: { onClose: () => void }) {
           </div>
 
           {/* Déroulement — vrai tableau */}
-          <div className="mb-8">
+          <div className="mb-8 overflow-x-auto">
             <h3 className="font-bold text-base text-ink mb-3">Déroulement</h3>
             <div className="border border-line rounded-lg overflow-hidden">
               <table className="w-full text-sm border-collapse">
