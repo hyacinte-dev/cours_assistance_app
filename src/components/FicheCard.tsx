@@ -55,7 +55,7 @@ export default function FicheCard({ fiche, color }: { fiche: Fiche; color: Color
 
     return (
         <div
-            className="bg-white border rounded-2xl p-6 md:p-8 print:border-none print:shadow-none print:p-0 print:rounded-none"
+            className="bg-white border rounded-2xl p-4 md:p-8 print:border-none print:shadow-none print:p-0 print:rounded-none"
             style={{
                 ['--accent' as string]: color.accent,
                 ['--accent-soft' as string]: color.soft,

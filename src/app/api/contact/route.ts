@@ -2,7 +2,7 @@ import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
-const CONTACT_EMAIL = 'ouedraogohyacinte5178@gmail.com'
+const CONTACT_EMAIL = 'fichesplus.support@gmail.com'
 
 export async function POST(request: Request) {
     try {
@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     }
 
     const { error } = await resend.emails.send({
-        from: 'Fiches+ <onboarding@resend.dev>',
+        from: 'Fiches+ <noreply@fichesplus.com>',
         to: CONTACT_EMAIL,
         replyTo: email,
         subject: sujet ? `[Fiches+ Contact] ${sujet}` : '[Fiches+ Contact] Nouveau message',
