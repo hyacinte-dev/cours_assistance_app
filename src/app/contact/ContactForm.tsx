@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Nav from '@/components/Nav'
+import WhatsAppCommunityCard from '@/components/whatsappCommunotyCard'
 
 function BgDecorations() {
     return (
@@ -20,7 +21,7 @@ const CONTACT_INFOS = [
         </svg>
         ),
         label: 'Email',
-        value: 'ouedraogohyacinte5178@gmail.com',
+        value: 'fichesplus.support@gmail.com',
         sub: 'Réponse sous 24 h',
         text: 'text-blue-600',
         bg: 'bg-blue-600/[0.07]',
@@ -54,7 +55,7 @@ const CONTACT_INFOS = [
 const FAQS = [
     {
         q: "Comment fonctionne l'abonnement à 5 000 FCFA/mois ?",
-        a: "L'abonnement vous donne accès à toutes les fonctionnalités de Fiches+ (génération, révision, export) avec jusqu'à 200 fiches par mois. Il se renouvelle automatiquement chaque mois et peut être résilié à tout moment depuis votre espace personnel.",
+        a: "L'abonnement vous donne accès à toutes les fonctionnalités de Fiches+ (génération, révision, export) avec jusqu'à 200 fiches par mois. Il se renouvelle manuellement chaque mois et peut être résilié à tout moment depuis votre espace personnel.",
     },
     {
         q: 'Les fiches sont-elles conformes aux programmes officiels du MENAPLN ?',
@@ -66,7 +67,7 @@ const FAQS = [
     },
     {
         q: 'Comment régler mon abonnement ?',
-        a: 'Le paiement se fait via PayDunya, en toute sécurité : Orange Money, Moov Money, ou carte bancaire. Un reçu est généré après chaque transaction validée.',
+        a: 'Le paiement se fait via Chariow, en toute sécurité : Orange Money, Moov Money, ou carte bancaire. Un reçu est généré après chaque transaction validée.',
     },
     ]
 
@@ -285,6 +286,7 @@ const FAQS = [
                     ))}
                 </div>
                 </div>
+                <WhatsAppCommunityCard />
             </div>
             </div>
         </main>
