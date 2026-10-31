@@ -61,16 +61,24 @@ export async function POST(request: Request) {
 
     
     const access = await canCreateFiche(supabase, user.id)
-        if (!access.allowed) {
-            return NextResponse.json(
-                {
-                    error: access.isSubscribed
-                        ? `Limite de ${access.limit} fiches atteinte pour ce mois. Votre quota se renouvelle avec votre prochain cycle d'abonnement.`
-                        : 'Quota de fiches gratuites atteint. Un abonnement est nécessaire.',
-                },
-                { status: 403 }
-            )
+    if (!access.allowed) {
+        const messages = {
+            FREE_LIMIT: `Vos ${access.limit} fiches gratuites sont utilisées. Choisissez le pack découverte ou l'abonnement mensuel pour continuer.`,
+            EXPIRED: 'Votre offre est terminée. Choisissez une offre pour continuer à créer des fiches.',
+            PLAN_LIMIT:
+                access.plan === 'decouverte'
+                    ? `Vous avez utilisé les ${access.limit} fiches de votre pack découverte. Passez à l'abonnement mensuel pour continuer.`
+                    : `Limite de ${access.limit} fiches atteinte pour ce cycle.`,
         }
+        return NextResponse.json(
+            {
+                error: messages[access.reason ?? 'FREE_LIMIT'],
+                reason: access.reason,
+                upgradeUrl: '/subscription',
+            },
+            { status: 403 }
+        )
+    }
 
     const body = await request.json()
     const { discipline, matiere, niveau, theme, titre, objectifs, materiels, duree, methodes, champsObservation } = body

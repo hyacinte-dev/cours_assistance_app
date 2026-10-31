@@ -17,3 +17,15 @@ export const PLANS = {
 export type PlanType = keyof typeof PLANS;
 
 export const FREE_FICHES_LIMIT = 2;
+
+// Date de fin (format YYYY-MM-DD) d'un abonnement qui commence à `from`
+export function getEndDate(plan: PlanType, from: Date = new Date()): string {
+    const end = new Date(from)
+    end.setDate(end.getDate() + PLANS[plan].durationDays)
+    return end.toISOString().slice(0, 10)
+}
+//vérifie qu'une valeur reçue est bien un plan connu
+
+export function isPlanType(value: unknown): value is PlanType {
+    return typeof value === 'string' && Object.prototype.hasOwnProperty.call(PLANS, value)
+}
